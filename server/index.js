@@ -10,14 +10,14 @@ const app = express();
 dotenv.config();
 
 const connect = () => {
-  mongoose
-    .connect(process.env.MONGO)
-    .then(() => {
-      console.log("Connected to DB");
-    })
-    .catch((err) => {
-      throw err;
-    });
+    mongoose
+        .connect(process.env.MONGO)
+        .then(() => {
+            console.log("Connected to DB");
+        })
+        .catch((err) => {
+            throw err;
+        });
 };
 
 app.use(express.json());
@@ -26,14 +26,21 @@ app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/auth", authRoutes);
 
-// app.use(err, req, res, next, (message) => {
-//   res.send({
-//     message: message,
-//     error: err,
-//   });
-// });
+// this function has no mount path and is executed every time the app receives a request
+app.use((err, req, res, next) => {
+    const status = err.status || 500;
+    const message = err.message || "Something went wrong!";
+    console.log("func 1")
+    console.log("req",req)
+    // console.log("res",res)
+    return res.status(status).json({
+        success: false,
+        status: status,
+        message: message,
+    });
+});
 
 app.listen(8800, () => {
-  console.log("Running on port 8800");
-  connect();
+    console.log("Running on port 8800");
+    connect();
 });
