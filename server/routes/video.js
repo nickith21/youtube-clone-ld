@@ -17,8 +17,8 @@ router.delete("/:videoId", verifyToken, deleteVideo);
 router.put("/:videoId", verifyToken, updateVideo);
 router.get("/find/:videoId", getVideo);
 router.put("/view/:videoId", addView);
-router.get("/trend", trendingVideo);
 router.get("/rand", randomVideo);
+router.get("/trend", trendingVideo);
 router.get("/sub", subscriberVideos);
 
 export default router;

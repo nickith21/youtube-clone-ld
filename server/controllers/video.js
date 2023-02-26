@@ -57,15 +57,15 @@ export const getVideo = async (req, res, next) => {
 };
 export const addView = async (req, res, next) => {
   try {
-    await Video.findByIdAndUpdate(req.params.videoId,{
-        $inc: {views: 1}
-    })
-    res.status(200).json("Video has been viewed.")
+    await Video.findByIdAndUpdate(req.params.videoId, {
+      $inc: { views: 1 },
+    });
+    res.status(200).json("Video has been viewed.");
   } catch (err) {
     next(err);
   }
 };
-export const trendingVideo = async (req, res, next) => {
+export const randomVideo = async (req, res, next) => {
   try {
     const video = await Video.findById(req.params.videoId);
     res.status(200).json(video);
@@ -73,7 +73,7 @@ export const trendingVideo = async (req, res, next) => {
     next(err);
   }
 };
-export const randomVideo = async (req, res, next) => {
+export const trendingVideo = async (req, res, next) => {
   try {
     const video = await Video.findById(req.params.videoId);
     res.status(200).json(video);
