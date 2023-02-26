@@ -19,6 +19,6 @@ router.get("/find/:videoId", getVideo);
 router.put("/view/:videoId", addView);
 router.get("/rand", randomVideo);
 router.get("/trend", trendingVideo);
-router.get("/sub", subscriberVideos);
+router.get("/sub", verifyToken, subscriberVideos);
 
 export default router;
