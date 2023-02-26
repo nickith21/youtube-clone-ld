@@ -22,7 +22,6 @@ export const update = async (req, res, next) => {
     next(createError(403, "You can only update your own account."));
   }
 };
-
 export const deleteUser = async (req, res, next) => {
   const userId = req.params.id;
   const verifiedUserId = req.user.id;
@@ -35,10 +34,9 @@ export const deleteUser = async (req, res, next) => {
       next(err);
     }
   } else {
-    next(createError(403, "You can only delete your own account."));
+    return next(createError(403, "You can only delete your own account."));
   }
 };
-
 export const findUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
@@ -47,9 +45,13 @@ export const findUser = async (req, res, next) => {
     next(err);
   }
 };
-
 export const subscribe = async (req, res, next) => {
-  console.log(req.user.id, req.params.id);
+  const user = await User.findById(req.user.id);
+  const subscribedChannels = user.subscribedUsers;
+  const channel = subscribedChannels.indexOf(req.params.id);
+  if (channel !== -1) {
+    return next(createError(403, "Already subscribed to this user."));
+  }
   try {
     await User.findByIdAndUpdate(req.user.id, {
       $push: {
