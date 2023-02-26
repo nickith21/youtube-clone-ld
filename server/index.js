@@ -5,6 +5,7 @@ import userRoutes from "./routes/user.js";
 import videoRoutes from "./routes/video.js";
 import commentRoutes from "./routes/comment.js";
 import authRoutes from "./routes/auth.js";
+import cookieParser from "cookie-parser"
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,7 @@ const connect = () => {
 };
 
 app.use(express.json());
+app.use(cookieParser())
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
@@ -30,8 +32,6 @@ app.use("/api/auth", authRoutes);
 app.use((err, req, res, next) => {
     const status = err.status || 500;
     const message = err.message || "Something went wrong!";
-    console.log("func 1")
-    console.log("req",req)
     // console.log("res",res)
     return res.status(status).json({
         success: false,
