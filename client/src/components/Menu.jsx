@@ -17,6 +17,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import ReportIcon from "@mui/icons-material/Report";
 import HelpIcon from "@mui/icons-material/Help";
 import SettingsBrightnessIcon from "@mui/icons-material/SettingsBrightness";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -85,10 +86,13 @@ const Menu = ({darkMode,setDarkMode,theme}) => {
   return (
     <Container>
       <Wrapper>
+      <Link to="/" style={{ textDecoration: "none" , color: "inherit"}}>
+
         <Logo>
           <Img src={LogoImg} />
           BirdTube
         </Logo>
+        </Link>
         <Item>
           <HomeIcon />
           Home
@@ -159,7 +163,7 @@ const Menu = ({darkMode,setDarkMode,theme}) => {
         </Item>
         <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessIcon />
-          Theme
+          {darkMode ? "Light" : "Dark"} Mode
         </Item>
       </Wrapper>
     </Container>

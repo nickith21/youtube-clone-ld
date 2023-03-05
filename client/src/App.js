@@ -3,6 +3,9 @@ import styled, { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./utils/theme.js";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Video from "./pages/Video";
 
 const Container = styled.div`
   display: flex;
@@ -21,80 +24,23 @@ function App() {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
+        <BrowserRouter>
         <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
         <Main>
           <Navbar />
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
-          <Wrapper>Video Cards</Wrapper>
+          <Wrapper>
+              <Routes>
+                <Route path="/">
+                  <Route index element={<Home />} />
+                  {/* <Route path="signin" element={<SignIn />} /> */}
+                  <Route path="video">
+                    <Route path=":id" element={<Video />} />
+                  </Route>
+                </Route>
+              </Routes>
+            </Wrapper>
         </Main>
+        </BrowserRouter>
       </Container>
     </ThemeProvider>
   );
