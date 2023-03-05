@@ -154,19 +154,19 @@ const Video = () => {
         <Comments/>
       </Content>
       <Recommendation>
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
+        <Card type="small" />
       </Recommendation>
     </Container>
   );

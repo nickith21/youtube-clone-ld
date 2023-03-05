@@ -51,6 +51,10 @@ const Item = styled.div`
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.soft};
+  }
 `;
 
 const Hr = styled.hr`
@@ -76,22 +80,21 @@ const Button = styled.button`
 `;
 
 const Title = styled.h2`
-    font-size: 14px;
-    font-weight: 500;
-    color: #aaaaaa;
-    margin-bottom: 20px;
-`
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 20px;
+`;
 
-const Menu = ({darkMode,setDarkMode,theme}) => {
+const Menu = ({ darkMode, setDarkMode, theme }) => {
   return (
     <Container>
       <Wrapper>
-      <Link to="/" style={{ textDecoration: "none" , color: "inherit"}}>
-
-        <Logo>
-          <Img src={LogoImg} />
-          BirdTube
-        </Logo>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Logo>
+            <Img src={LogoImg} />
+            BirdTube
+          </Logo>
         </Link>
         <Item>
           <HomeIcon />
@@ -117,10 +120,12 @@ const Menu = ({darkMode,setDarkMode,theme}) => {
         <Hr />
         <Login>
           Sign in to like videos, comment, and subscribe.
-          <Button>
-            <AccountCircleOutlinedIcon />
-            SIGN IN
-          </Button>
+          <Link to="signin" style={{ textDecoration: "none" }}>
+            <Button>
+              <AccountCircleOutlinedIcon />
+              SIGN IN
+            </Button>
+          </Link>
         </Login>
         <Hr />
         <Title>BEST OF BIRDTUBE</Title>
