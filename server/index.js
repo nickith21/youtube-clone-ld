@@ -6,9 +6,11 @@ import videoRoutes from "./routes/video.js";
 import commentRoutes from "./routes/comment.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser"
+import cors from "cors"
 
 const app = express();
 dotenv.config();
+app.use(cors());
 
 const connect = () => {
     mongoose
