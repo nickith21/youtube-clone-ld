@@ -9,23 +9,23 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const Home = () => {
+const Home = ({type}) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`http://localhost:8800/api/videos/rand`);
+      const res = await axios.get(`http://localhost:8800/api/videos/${type}`);
       const data = await res.data;
       console.log(data);
       setVideos(data);
     };
     fetchVideos();
-  }, []);
+  }, [type]);
 
   return (
     <Container>
       {videos.map((video) => (
-        <Card />
+        <Card key={video._id} video={video}/>
       ))}
     </Container>
   );
